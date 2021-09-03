@@ -20,12 +20,13 @@ module.exports = {
 
 // register user
 async function registerUser(req,res) {
+	console.log(req.body);
 	let email = req.body.email;
 	let details = {
 		from: "balachandiran132@gmail.com",
 		to: email,
 		subject: "Wellcome to Food Park",
-		text: "Wellcome to food Park, You have successfullly registered...."
+		text: "You have successfullly registered...."
 	}
 	let name = req.body.name;
 	let password1 = req.body.password;
@@ -54,18 +55,27 @@ async function registerUser(req,res) {
 
 //Login user
 async function loginUser(req,res) {
+	console.log(req.body)
 	let email = req.body.email;
 	let password = req.body.password;
 	let users = await user.findOne({"email": email}).exec();
-	console.log(users);
-	let pass = users.password
+	if(users){
+
+		console.log(users);
+	let pass = users.password;
 	console.log(pass);
 	let match = await bcrypt.compare(password, pass);
+
 	if(match){
-		res.json({"status": "Success", "message": "Login successfully"});
+		res.json({"status": "Success", "message": "Login successfully","user": users});
 	}else{
 		res.json({"status": "Failed", "message": "Username or password wrong"});
 	}
+	}else{
+
+		res.json({"status": "Failed", "message": "User not Registered"});
+	}
+	
 }
 
 	function sendMail(details){
