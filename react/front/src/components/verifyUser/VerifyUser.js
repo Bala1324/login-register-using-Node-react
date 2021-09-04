@@ -29,7 +29,7 @@ const VerifyUser = ({ setLoginUser}) => {
             if(res.data.status === "Success"){
              localStorage.setItem('otp',res.data.otp)
                 console.log("userDetails", res.data.otp);
-                history.push("/resetpassword")
+                history.push("/verifyOtp")
             }
            
         })

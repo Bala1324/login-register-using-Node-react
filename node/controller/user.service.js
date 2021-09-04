@@ -83,7 +83,7 @@ async function loginUser(req, res) {
 // forget password
 async function forgetPassword(req, res) {
 	try {
-		let email = req.body.email;
+		let email = req.body.emailid;
 		let NewPassword = req.body.password;
 		let users = await user.findOne({ "email": email }).exec();
 		let salt = await bcrypt.genSalt(10);

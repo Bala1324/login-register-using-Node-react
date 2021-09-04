@@ -7,7 +7,7 @@ const VerifyUser = ({ setLoginUser}) => {
     const history = useHistory()
 
     const [ user, setUser] = useState({
-        enteredOtp:""
+        email:""
     })
 
     const handleChange = e => {
@@ -21,8 +21,8 @@ const VerifyUser = ({ setLoginUser}) => {
     const verifyOTP = () => {
         let otp = localStorage.getItem('otp');
         console.log("otp",otp);
-        console.log("enteredOtp",user.enteredOtp);
-        if(otp === user.enteredOtp){
+        console.log("enteredOtp",user.email);
+        if(otp === user.email){
             alert("Otp verified")
 
             history.push("/resetpassword")
@@ -35,7 +35,7 @@ const VerifyUser = ({ setLoginUser}) => {
     return (
         <div className="login">
             <h1>Verify OTP</h1>
-            <input type="text" name="otp" value={user.enteredOtp} onChange={handleChange} placeholder="Enter your OTP"></input>
+            <input type="text" name="email" value={user.email} onChange={handleChange} placeholder="Enter your OTP"></input>
             <div className="button" onClick={verifyOTP}>Verify OTP</div>
         </div>
     )
