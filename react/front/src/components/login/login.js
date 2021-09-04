@@ -39,6 +39,7 @@ const Login = ({ setLoginUser}) => {
             <div className="button" onClick={login}>Login</div>
             <div>or</div>
             <div className="button" onClick={() => history.push("/register")}>Register</div>
+            <p className= "forgotxt" onClick={() =>history.push("/verifyUser")}>forgot password?</p>
         </div>
     )
 }

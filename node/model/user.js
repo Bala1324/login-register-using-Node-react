@@ -7,7 +7,8 @@ const userSchema = new Schema({
 	uuid: {type: String, required: false, unique: true},
 	email: {type: String, required: true },
 	name: {type: String, required: true },
-	password: {type: String, required: true }
+	password: {type: String, required: true },
+	confirmPassword: {type: String, required: false }
 },{
 	timestamps: true
 });
