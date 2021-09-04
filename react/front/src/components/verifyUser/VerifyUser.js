@@ -2,6 +2,8 @@ import React, {useState} from "react"
 import "./verifyUser.css"
 import axios from "axios"
 import { useHistory } from "react-router-dom"
+import bcrypt from "bcryptjs"
+
 
 const VerifyUser = ({ setLoginUser}) => {
 
@@ -27,9 +29,12 @@ const VerifyUser = ({ setLoginUser}) => {
            
             alert(res.data.message)
             if(res.data.status === "Success"){
-             localStorage.setItem('otp',res.data.otp)
-                console.log("userDetails", res.data.otp);
-                history.push("/verifyOtp")
+                let resOtp = res.data.otp;
+                let myotp = bcrypt.hashSync(resOtp,bcrypt.genSaltSync());
+                console.log(myotp);
+                localStorage.setItem('otp',myotp)
+                 console.log("userDetails", res.data.otp);
+                 history.push("/verifyOtp")
             }
            
         })

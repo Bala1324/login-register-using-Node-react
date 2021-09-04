@@ -1,6 +1,8 @@
 import React, {useState} from "react"
 import "./verifyOTP.css"
 import { useHistory } from "react-router-dom"
+import bcrypt from "bcryptjs"
+
 
 const VerifyUser = ({ setLoginUser}) => {
 
@@ -20,9 +22,10 @@ const VerifyUser = ({ setLoginUser}) => {
 
     const verifyOTP = () => {
         let otp = localStorage.getItem('otp');
+        let otpmatch = bcrypt.compareSync(user.email, otp);
         console.log("otp",otp);
         console.log("enteredOtp",user.email);
-        if(otp === user.email){
+        if(otpmatch){
             alert("Otp verified")
 
             history.push("/resetpassword")
