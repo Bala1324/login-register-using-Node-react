@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import "./resetpassword.css"
+import "./forgotPassword.css"
 import axios from "axios"
 import { useHistory } from "react-router-dom"
 

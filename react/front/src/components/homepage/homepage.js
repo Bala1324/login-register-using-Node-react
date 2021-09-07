@@ -1,14 +1,14 @@
 import React from "react"
 import "./homepage.css"
 
-const Homepage = ({setLoginUser}) => {
+const Homepage = ({updateUser}) => {
 //    const [ user, setUser] = useState(res.body.users)
  
 
     return (
         <div className="homepage">
             <h1>Hello </h1>
-            <div className="button" onClick={() => setLoginUser({})} >Logout</div>
+            <div className="button" onClick={() => updateUser({})} >Logout</div>
         </div>
     )
 }
